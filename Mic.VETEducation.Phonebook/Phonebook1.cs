@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Mic.VETEducation.Phonebook
 {
-    class Phonebook
+    class Phonebook1
     {
         private Dictionary<string, int> phonebook = new Dictionary<string, int>();
 

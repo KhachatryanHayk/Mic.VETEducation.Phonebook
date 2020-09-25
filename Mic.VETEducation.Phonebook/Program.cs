@@ -7,51 +7,52 @@ namespace Mic.VETEducation.Phonebook
         static void Main(string[] args)
         {
             //Dictionary___
-            var phonebook = new Phonebook();
+            var phonebook1 = new Phonebook1();
 
-            phonebook.AddPeople("Hayk Khachatryan", 123456789);
-            phonebook.AddPeople("Gor", 123456789);
-            phonebook.AddPeople("Vazgen", 123456789);
-            phonebook.AddPeople("Miqayel", 123456789);
-            phonebook.AddPeople("Arame", 123456789);
-            phonebook.AddPeople("Albert", 123456789);
-            phonebook.AddPeople("Edmon", 123456789);
-            phonebook.AddPeople("Hayk", 123456789);
-            phonebook.AddPeople("Hayk", 123456789);
+            phonebook1.AddPeople("Hayk Khachatryan", 123456789);
+            phonebook1.AddPeople("Gor", 123456789);
+            phonebook1.AddPeople("Vazgen", 123456789);
+            phonebook1.AddPeople("Miqayel", 123456789);
+            phonebook1.AddPeople("Arame", 123456789);
+            phonebook1.AddPeople("Albert", 123456789);
+            phonebook1.AddPeople("Edmon", 123456789);
+            phonebook1.AddPeople("Hayk", 123456789);
+            phonebook1.AddPeople("Hayk", 123456789);
             Console.WriteLine();
 
-            phonebook.GetPersonNumber("Hayk");
+            phonebook1.GetPersonNumber("Hayk");
             Console.WriteLine();
 
-            phonebook.GetPeopleList();
+            phonebook1.GetPeopleList();
             Console.WriteLine();
 
-            phonebook.RemovePeople("Hayk Khachatryan");
-            phonebook.RemovePeople("Albert");
-            phonebook.GetPeopleList();
+            phonebook1.RemovePeople("Hayk Khachatryan");
+            phonebook1.RemovePeople("Albert");
+            phonebook1.GetPeopleList();
 
-
+            Console.WriteLine(new string('-',23));
             //IEnumerable___
-            //var root = new People { Nickname = "Hayk", PhoneNumber = 123456789 };
 
-            //root.AddPeople("Hayk Khachatryan", 123456789);
-            //root.AddPeople("Gor", 123456789);
-            //root.AddPeople("Vazgen", 123456789);
-            //root.AddPeople("Miqayel", 123456789);
-            //root.AddPeople("Arame", 123456789);
-            //root.AddPeople("Albert", 123456789);
-            //root.AddPeople("Edmon", 123456789);
-            //root.AddPeople("Hayk", 123456789);
+            var phonebook2 = new Phonebook2 { Nickname = "Hayk", PhoneNumber = 123456789 };
 
-            //root.GetPersonNumber("Hayk");
-            //Console.WriteLine();
+            phonebook2.AddPeople("Hayk Khachatryan", 123456789);
+            phonebook2.AddPeople("Gor", 123456789);
+            phonebook2.AddPeople("Vazgen", 123456789);
+            phonebook2.AddPeople("Miqayel", 123456789);
+            phonebook2.AddPeople("Arame", 123456789);
+            phonebook2.AddPeople("Albert", 123456789);
+            phonebook2.AddPeople("Edmon", 123456789);
+            phonebook2.AddPeople("Hayk", 123456789);
 
-            //root.GetPeopleList();
-            //Console.WriteLine();
+            phonebook2.GetPersonNumber("Hayk");
+            Console.WriteLine();
 
-            //root.RemovePeople("Hayk Khachatryan");
-            //root.RemovePeople("Albert");
-            //root.GetPeopleList();
+            phonebook2.GetPeopleList();
+            Console.WriteLine();
+
+            phonebook2.RemovePeople("Hayk Khachatryan");
+            phonebook2.RemovePeople("Albert");
+            phonebook2.GetPeopleList();
         }
     }
 }

@@ -3,30 +3,55 @@ using System.Collections;
 
 namespace Mic.VETEducation.Phonebook
 {
-    class People : IEnumerable
+    class Phonebook2 : IEnumerable
     {
         public string Nickname { get; set; }
         public int PhoneNumber { get; set; }
-        public People Next;
+        public Phonebook2 Next;
 
-        public People AddPeople(string Nickname, int PhoneNumber)
+        public Phonebook2 AddPeople(string Nickname, int PhoneNumber)
         {
-                if (Next == null)
-                {
-                    Next = new People { Nickname = Nickname, PhoneNumber = PhoneNumber };
-                    return Next;
-                }
 
-                Next.AddPeople(Nickname, PhoneNumber);
+            if (Next == null)
+            {
+                Next = new Phonebook2 { Nickname = Nickname, PhoneNumber = PhoneNumber };
                 return Next;
+            }
+
+            Next.AddPeople(Nickname, PhoneNumber);
+            return Next;
         }
         public void RemovePeople(string Nickname)
         {
-            //...
+            Phonebook2 current = GetByNickname(Nickname);
+            current.Nickname = null;
+
+            while (true)
+            {
+                current.Nickname = current.Next.Nickname;
+                current.PhoneNumber = current.Next.PhoneNumber;
+                if (current.Next.Next != null)
+                    current = current.Next;
+                else
+                    break;
+            }
+            current.Next = null;
+        }
+        private Phonebook2 GetByNickname(string Nickname)
+        {
+            Phonebook2 current = this;
+
+            while (true)
+            {
+                if (current.Nickname == Nickname)
+                    break;
+                current = current.Next;
+            }
+            return current;
         }
         public void GetPersonNumber(string Nickname)
         {
-            People Temp = this;
+            Phonebook2 Temp = this;
             GetByKey(Nickname, ref Temp);
 
             Console.WriteLine($"{Nickname} : +374{Temp.PhoneNumber}");
@@ -37,7 +62,7 @@ namespace Mic.VETEducation.Phonebook
             if (Next != null)
                 Next.GetPeopleList();
         }
-        private void GetByKey(string Nickname, ref People people)
+        private void GetByKey(string Nickname, ref Phonebook2 people)
         {
             if (this.Nickname == Nickname)
             {
@@ -54,10 +79,10 @@ namespace Mic.VETEducation.Phonebook
         }
         private class Enumerator : IEnumerator
         {
-            private People _root;
+            private Phonebook2 _root;
 
 
-            public Enumerator(People root)
+            public Enumerator(Phonebook2 root)
             {
                 _root = root;
             }
