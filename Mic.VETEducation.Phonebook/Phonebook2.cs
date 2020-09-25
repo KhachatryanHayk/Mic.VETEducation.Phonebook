@@ -98,15 +98,11 @@ namespace Mic.VETEducation.Phonebook
         private class Enumerator : IEnumerator
         {
             private Phonebook2 _root;
-
-
             public Enumerator(Phonebook2 root)
             {
                 _root = root;
             }
-
             public object Current { get; private set; }
-
             public bool MoveNext()
             {
                 if (_root == null)
@@ -117,7 +113,6 @@ namespace Mic.VETEducation.Phonebook
 
                 return true;
             }
-
             public void Reset()
             {
                 _root = null;
