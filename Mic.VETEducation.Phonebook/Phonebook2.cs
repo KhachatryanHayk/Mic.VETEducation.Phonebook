@@ -11,50 +11,68 @@ namespace Mic.VETEducation.Phonebook
 
         public Phonebook2 AddPeople(string Nickname, int PhoneNumber)
         {
-
-            if (Next == null)
+            if (GetByNickname(Nickname) == null)
             {
-                Next = new Phonebook2 { Nickname = Nickname, PhoneNumber = PhoneNumber };
+                if (Next == null)
+                {
+                    Next = new Phonebook2 { Nickname = Nickname, PhoneNumber = PhoneNumber };
+                    return Next;
+                }
+
+                Next.AddPeople(Nickname, PhoneNumber);
                 return Next;
             }
-
-            Next.AddPeople(Nickname, PhoneNumber);
+            Console.WriteLine($"You already have a person named {Nickname} in your phone book.");
             return Next;
         }
         public void RemovePeople(string Nickname)
         {
             Phonebook2 current = GetByNickname(Nickname);
-            current.Nickname = null;
-
-            while (true)
+            if (current != null)
             {
-                current.Nickname = current.Next.Nickname;
-                current.PhoneNumber = current.Next.PhoneNumber;
-                if (current.Next.Next != null)
-                    current = current.Next;
-                else
-                    break;
+                current.Nickname = null;
+
+                while (true)
+                {
+                    current.Nickname = current.Next.Nickname;
+                    current.PhoneNumber = current.Next.PhoneNumber;
+                    if (current.Next.Next != null)
+                        current = current.Next;
+                    else
+                        break;
+                }
+                current.Next = null;
             }
-            current.Next = null;
         }
         private Phonebook2 GetByNickname(string Nickname)
         {
             Phonebook2 current = this;
+            bool answer = false;
 
             while (true)
             {
                 if (current.Nickname == Nickname)
+                {
+                    answer = true;
                     break;
-                current = current.Next;
+                }
+                if (current.Next != null)
+                    current = current.Next;
+                else
+                    break;
             }
+            if (!answer)
+                current = null;
             return current;
         }
         public void GetPersonNumber(string Nickname)
         {
-            Phonebook2 Temp = this;
-            GetByKey(Nickname, ref Temp);
+            Phonebook2 Temp = GetByNickname(Nickname);
 
-            Console.WriteLine($"{Nickname} : +374{Temp.PhoneNumber}");
+            if (Temp != null)
+                Console.WriteLine($"{Nickname} : +374{Temp.PhoneNumber}");
+            else
+                Console.WriteLine($"There is no man named {Nickname} in your phone book)");
         }
         public void GetPeopleList()
         {
