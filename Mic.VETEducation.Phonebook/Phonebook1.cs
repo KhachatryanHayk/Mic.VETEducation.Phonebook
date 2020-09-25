@@ -31,7 +31,7 @@ namespace Mic.VETEducation.Phonebook
             catch (Exception)
             {
 
-                Console.WriteLine($"There is no man named {Nickname} in your phone book)");
+                Console.WriteLine($"There is no man named {Nickname} in your phone book");
             }
         }
         public void GetPeopleList()

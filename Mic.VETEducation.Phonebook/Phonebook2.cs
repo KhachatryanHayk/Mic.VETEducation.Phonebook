@@ -72,24 +72,13 @@ namespace Mic.VETEducation.Phonebook
             if (Temp != null)
                 Console.WriteLine($"{Nickname} : +374{Temp.PhoneNumber}");
             else
-                Console.WriteLine($"There is no man named {Nickname} in your phone book)");
+                Console.WriteLine($"There is no man named {Nickname} in your phone book");
         }
         public void GetPeopleList()
         {
             Console.WriteLine($"{Nickname} : +374{PhoneNumber}");
             if (Next != null)
                 Next.GetPeopleList();
-        }
-        private void GetByKey(string Nickname, ref Phonebook2 people)
-        {
-            if (this.Nickname == Nickname)
-            {
-                people = this;
-            }
-            else
-            {
-                Next.GetByKey(Nickname, ref people);
-            }
         }
         public IEnumerator GetEnumerator()
         {
