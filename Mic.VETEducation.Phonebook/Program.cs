@@ -34,7 +34,6 @@ namespace Mic.VETEducation.Phonebook
             phonebook1.RemovePeople("UnavailableName");
             Console.WriteLine("New List");
             phonebook1.PrintPeopleList();
-
         }
     }
 }
